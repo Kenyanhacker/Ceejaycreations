@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ceejay Creations | Full-Stack Software & Web Systems Agency</title>
+    <meta
+      name="description"
+      content="Ceejay Creations builds full-stack web apps, custom software, and robotics-grade systems for founders who need to ship. Discovery calls, transparent pricing, real support."
+    />
+
+    <!-- Google Search Console verification — replace content with your real token or set VITE_GSC_TOKEN in your .env -->
+    <meta name="google-site-verification" content="REPLACE_WITH_YOUR_GSC_TOKEN" />
+    <!-- Content Security Policy: adjust sources to match your deployment (analytics, fonts, images) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data: https:; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com;" />
+
+    <meta property="og:image" content="/og-image.svg" />
+    <meta property="og:image:alt" content="Ceejay Creations — systems your business runs on" />
+
+    <script type="module">
+      // If VITE_GSC_TOKEN is provided at build time, set the meta tag so Search Console can verify the site
+      // Create a .env with VITE_GSC_TOKEN=your_token or set it in your deployment environment.
+      const gsc = import.meta.env.VITE_GSC_TOKEN;
+      if (gsc && gsc !== 'REPLACE_WITH_YOUR_GSC_TOKEN') {
+        const m = document.querySelector('meta[name="google-site-verification"]');
+        if (m) m.setAttribute('content', gsc);
+      }
+
+      // Allow overriding the Open Graph image via VITE_OG_IMAGE env var at build time
+      const og = import.meta.env.VITE_OG_IMAGE;
+      if (og) {
+        const ogMeta = document.querySelector('meta[property="og:image"]');
+        if (ogMeta) ogMeta.setAttribute('content', og);
+      }
+
+      // Add a data attribute to the html element to indicate reduced-motion preference or small-screen
+      try {
+        const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const smallScreen = window.innerWidth && window.innerWidth < 640;
+        if (prefersReduced || smallScreen) document.documentElement.setAttribute('data-reduced-motion', 'true');
+      } catch (e) {
+        // ignore
+      }
+    </script>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Ceejay Creations | Full-Stack Software & Web Systems Agency" />
+    <meta property="og:description" content="From discovery call to deployed system — Ceejay Creations designs and ships web apps, dashboards, and custom software." />
+    <meta property="og:type" content="website" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-ink text-paper font-body antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

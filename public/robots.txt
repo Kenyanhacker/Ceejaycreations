@@ -1,0 +1,7 @@
+User-agent: *
+Disallow:
+
+# Crawl-delay may be respected by some bots
+Crawl-delay: 10
+
+Sitemap: https://www.ceejaycreations.com/sitemap.xml

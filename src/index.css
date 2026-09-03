@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background: #a6e22e;
+  color: #0a0a0b;
+}
+
+/* Visible keyboard focus everywhere */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #a6e22e;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Thin custom scrollbar for slot lists / modals */
+.scroll-thin::-webkit-scrollbar {
+  width: 6px;
+}
+.scroll-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: #2a2a2e;
+  border-radius: 999px;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+@layer components {
+  .hero-btn {
+    @apply relative inline-flex items-center justify-center overflow-hidden rounded-full border border-white/15 bg-white/[0.04] px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+  .hero-btn:hover {
+    @apply -translate-y-0.5 border-signal/50;
+    box-shadow: 0 10px 30px rgba(166, 226, 46, 0.15);
+  }
+
+  /* Layered hover-reveal image background for hero buttons */
+  .hero-btn .btn-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transform: scale(1.15);
+    transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 0;
+  }
+  .hero-btn:hover .btn-bg {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .hero-btn .btn-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10, 10, 11, 0.35) 0%, rgba(10, 10, 11, 0.88) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+  }
+  .hero-btn:hover .btn-overlay {
+    opacity: 1;
+  }
+  .hero-btn .btn-content {
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease;
+  }
+}
+
+/* Terminal caret used in eyebrow labels */
+.caret::after {
+  content: "";
+  display: inline-block;
+  width: 0.55em;
+  height: 1em;
+  margin-left: 2px;
+  background: currentColor;
+  vertical-align: -0.15em;
+  animation: blink 1s step-end infinite;
+}
